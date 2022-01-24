@@ -4,20 +4,34 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="nickbenn"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2022-01-24 02:03:27 PM"/>
+        <attribute name="saved" value="2022-01-24 03:00:26 PM"/>
         <attribute name="created" value="bmlja2Jlbm47TkItWFBTLTE1OzIwMjItMDEtMjQ7MTE6MDY6NTcgQU07MjY4OQ=="/>
-        <attribute name="edited" value="bmlja2Jlbm47TkItWFBTLTE1OzIwMjItMDEtMjQ7MDI6MDM6MjcgUE07NDsyODA5"/>
+        <attribute name="edited" value="bmlja2Jlbm47TkItWFBTLTE1OzIwMjItMDEtMjQ7MDM6MDA6MjYgUE07NTsyODA3"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
-            <declare name="celsius" type="Real" array="False" size=""/>
-            <output expression="&quot;Please enter a temperature in Celsius degrees:&quot;" newline="True"/>
-            <input variable="celsius"/>
-            <declare name="fahrenheit" type="Real" array="False" size=""/>
-            <assign variable="fahrenheit" expression="convertC2F(celsius)"/>
-            <output expression="&quot;Temperature in degrees Fahrenheit: &quot;" newline="False"/>
-            <output expression="fahrenheit" newline="True"/>
+            <declare name="converting" type="Boolean" array="False" size=""/>
+            <do expression="converting">
+                <declare name="input" type="String" array="False" size=""/>
+                <output expression="&quot;Please enter a temperature in Celsius degrees:&quot;" newline="True"/>
+                <input variable="input"/>
+                <if expression="Len(input) &gt; 0">
+                    <then>
+                        <assign variable="converting" expression="true"/>
+                        <declare name="celsius" type="Real" array="False" size=""/>
+                        <assign variable="celsius" expression="ToReal(input)"/>
+                        <declare name="fahrenheit" type="Real" array="False" size=""/>
+                        <assign variable="fahrenheit" expression="convertC2F(celsius)"/>
+                        <output expression="&quot;Temperature in degrees Fahrenheit: &quot;" newline="False"/>
+                        <output expression="fahrenheit" newline="True"/>
+                    </then>
+                    <else>
+                        <assign variable="converting" expression="false"/>
+                    </else>
+                </if>
+            </do>
+            <output expression="&quot;Good bye!&quot;" newline="True"/>
         </body>
     </function>
     <function name="convertC2F" type="Real" variable="f">
